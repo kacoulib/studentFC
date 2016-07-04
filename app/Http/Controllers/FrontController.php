@@ -3,41 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Student;
-use Illuminate\Http\Request;
+use App\Category;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        dd('ici method index');
-
-        return view('home');
-    }
-
-    public function bio()
-    {
-        $infos = [
-            'antoine' => [
-                'address' => 'Aubenas',
-                'tel' => '02020202',
-            ],
-            'fred' => [
-                'address' => 'Aubenas',
-                'tel' => '01010101',
-            ],
-        ];
-
-        return view('bio', ['infos' => $infos]);
+        return view('front.home');
     }
 
     public function showAll()
     {
-        return Student::all();
+        $students = Student::all();
+
+        return view('front.student.list', ['students' => $students]);
     }
 
     public function showStudent($id)
     {
-        dd($id);
+        $student = Student::find($id);
+
+        return view('front.student.show', ['student' => $student]);
+    }
+
+    public function showPostByCategory($id)
+    {
+        $category = Category::find($id);
+        $titleCat = $category->title;
+
+        $posts = $category->posts;
+
+        return view('front.post.index', [
+            'posts' => $posts,
+            'titleCat' => $titleCat
+        ]);
+
     }
 }

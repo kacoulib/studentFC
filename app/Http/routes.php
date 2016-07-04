@@ -15,10 +15,12 @@
     return view('home'); // return envoi une réponse au client
 });*/
 
+Route::pattern('id', '[1-9][0-9]*');
+
 Route::get('/', 'FrontController@index');
 
 Route::get('student', 'FrontController@showAll');
 
 Route::get('student/{id}', 'FrontController@showStudent');
 
-Route::get('bio', 'FrontController@bio');
+Route::get('category/{id}', 'FrontController@showPostByCategory');
