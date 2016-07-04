@@ -9,6 +9,10 @@
     <nav>
         <a href="{{url('/')}}">Home</a>
         <a href="{{url('student')}}">Programers</a>
+        @forelse($categories as $id => $title)
+            <a href="{{url('category', $id)}}">{{$title}}</a>
+        @empty
+        @endforelse
     </nav>
 </header>
 <div class="container">

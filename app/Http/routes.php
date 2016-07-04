@@ -24,3 +24,11 @@ Route::get('student', 'FrontController@showAll');
 Route::get('student/{id}', 'FrontController@showStudent');
 
 Route::get('category/{id}', 'FrontController@showPostByCategory');
+
+Route::get('post/{id}', 'FrontController@showPost');
+
+
+
+
+
+
