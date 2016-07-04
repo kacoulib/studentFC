@@ -23,8 +23,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
-        'category_id' => rand(1,3),
+        'category_id' => rand(1, 3),
         'content' => $faker->paragraph(),
-        'status' => $faker->randomElement(['published','unpublished'])
+        'published_at' => $faker->dateTime,
+        'status' => $faker->randomElement(['published', 'unpublished'])
     ];
 });

@@ -11,7 +11,11 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Post::class, 10)->create();
+        factory(App\Post::class, 10)->create()->each(function ($post) {
+            $tagsId = [1, 2, 3]; // tags créés avant voir la classe DatabaseSeeder
+            shuffle($tagsId); // mélange les clés du tableau
+            $post->tags()->attach([$tagsId[0], $tagsId[1]]);
+        });
 
     }
 }

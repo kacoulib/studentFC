@@ -6,6 +6,7 @@
 
     <div class="content">
         {{$post->content}}
+        <br>{{$post->published_at}}
     </div>
 
 @endsection

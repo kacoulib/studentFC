@@ -28,9 +28,7 @@ class FrontController extends Controller
     // page d'accueil
     public function index()
     {
-        return view('front.home', [
-            'categories' => [1 => 'php', 2 => 'js']
-        ]);
+        return view('front.home');
     }
 
     public function showAll()
