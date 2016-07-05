@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+GULP='yes'
 USERNAME='root'
 PASSWORD=''
 DBNAME='db_programer'
@@ -19,3 +20,12 @@ EOF
 echo $MySQL | mysql --user=$USERNAME --password=$PASSWORD
 
 php artisan migrate:refresh --seed
+
+
+if [[ $GULP=='yes' ]];
+    then echo -e "REQUIRED: sqlite3 -- NOT INSTALLED !";
+    exit ;
+fi
+
+
+
