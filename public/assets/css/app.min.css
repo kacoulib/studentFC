@@ -1,1 +1,1 @@
-body{background:red}p{margin:.5em}
+body,html,ol,ul{margin:0;padding:0}#nav li{-webkit-border-radius:25px;-moz-border-radius:25px;-ms-border-radius:25px;border-radius:25px}#nav li a{color:red}#nav li a:hover{color:pink}body{font:1.4rem;background:#fff}.finky{font-family:fantasy;font-size:20rem;font-weight:900}a,section#main div a,section#main p a{font-weight:600}a{text-decoration:none}a:hover{text-decoration:underline}section#main{width:97%}section#main div,section#main p{font-size:1.2rem}

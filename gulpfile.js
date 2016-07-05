@@ -5,6 +5,11 @@ var gulp = require('gulp'),
     rename = require('gulp-rename')
     browserSync = require('browser-sync');
 
+gulp.task('hello', function(){
+    console.log('hello les dev');
+});
+
+
 gulp.task('browserSync', function() {
     browserSync({
         proxy: 'localhost:8000'
@@ -21,7 +26,7 @@ var path = {
     'sass': './resources/assets/sass/**/*.scss'
 };
 
-gulp.task('sass', function () {
+gulp.task('task-sass', function () {
 
     return gulp.src(path.resources.sass + '/app.scss')
         .pipe(sass({
@@ -37,8 +42,8 @@ gulp.task('sass', function () {
 });
 
 // task lancé si une modification est faite dans les fichiers scss des resources/assets/sass
-gulp.task('watch',['browserSync', 'sass'], function () {
-    gulp.watch(path.sass, ['sass'])
+gulp.task('watch',['browserSync', 'task-sass'], function () {
+    gulp.watch(path.sass, ['task-sass'])
 });
 
 gulp.task('default', ['watch']);

@@ -1,7 +1,13 @@
-body{
-  background: red;
-}
+@import 'modules/reset';
 
-p{
-  margin:0.5em;
-}
+// variables
+@import 'modules/config';
+
+// mixin css general
+@import 'modules/mixin';
+
+// navigation
+@import 'modules/nav';
+
+// layout master
+@import 'modules/layout-master';

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>App Student</title>
-    <link rel="stylesheet" href="{{asset('assets/css/app.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/app.min.css')}}">
 </head>
 <body>
 <header>
