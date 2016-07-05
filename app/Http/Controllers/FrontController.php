@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use View;
 use App\Post;
 use App\Student;
@@ -67,4 +68,14 @@ class FrontController extends Controller
             'post' => $post
         ]);
     }
+
+    public function showPostByTag($id)
+    {
+        $tag = Tag::find($id);
+
+        return view('front.post.tag', [
+            'tag' => $tag
+        ]);
+    }
+
 }

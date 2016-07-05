@@ -27,6 +27,8 @@ Route::get('category/{id}', 'FrontController@showPostByCategory');
 
 Route::get('post/{id}', 'FrontController@showPost');
 
+Route::get('tag/{id}', 'FrontController@showPostByTag');
+
 
 
 
