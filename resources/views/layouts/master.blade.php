@@ -16,8 +16,11 @@
         @endforelse
     </nav>
 </header>
-<div class="container">
+<div class="container grid-2-1">
     @yield('content')
+    <aside>
+        @include('partials.sidebar')
+    </aside>
 </div>
 </body>
 </html>

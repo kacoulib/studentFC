@@ -6,8 +6,8 @@ HOST='localhost'
 USER_USERNAME='tony'
 USER_PASSWORD='tony'
 
-_env_example="$APP_NAME/.env.example"
-_env="$APP_NAME/.env"
+_env_example=".env.example"
+_env=".env"
 
 if [ -f ${_env_example} ] && [ ! -f ${_env} ]
 then
@@ -22,6 +22,7 @@ then
     fi
 
     mv ${_env_example} ${_env}
+    php artisan key:generate
 fi
 
 echo "******** MySQL install ***************"
@@ -36,12 +37,15 @@ EOF
 
 echo $MySQL | mysql --user=$USERNAME --password=$PASSWORD
 
+php artisan migrate:refresh --seed
+
 echo "Voulez-vous installer Gulp et ses dépendances yes/no ?"
 read GULP
 
 if [ $GULP == 'yes' ]
 then
-    if [ $(uname -s)="Darwin" ]
+
+    if [ "$(uname -s)" == "Darwin" ]
     then
         sudo npm install -g gulp
         sudo npm install gulp --save-dev

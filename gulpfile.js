@@ -4,17 +4,16 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename')
-browserSync = require('browser-sync');
+    browserSync = require('browser-sync');
 
 gulp.task('hello', function () {
     console.log('hello les dev');
 });
 
-
 gulp.task('browserSync', function () {
-    browserSync({
-        proxy: 'localhost:8000'
-    })
+    browserSync.init({
+        proxy: "student.local"
+    });
 });
 
 var path = {
@@ -27,7 +26,8 @@ var path = {
         'js': './public/assets/js'
     },
     'sass': './resources/assets/sass/**/*.scss',
-    'js': './resources/assets/js/**/*.js'
+    'js': './resources/assets/js/**/*.js',
+    'blade': './resources/views/**/*.blade.php'
 };
 
 gulp.task('task-sass', function () {
@@ -49,14 +49,25 @@ gulp.task('task-js', function () {
     return gulp.src(path.resources.js + '/app.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(path.public.js));
+        .pipe(gulp.dest(path.public.js))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
 
+/* browserSync blade */
+gulp.task('task-blade', function() {
+    return gulp.src(path.blade )
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 // task lancé si une modification est faite dans les fichiers scss des resources/assets/sass
-gulp.task('watch', function () {
+gulp.task('watch', ['browserSync', 'task-sass', 'task-js', 'task-blade'], function () {
     gulp.watch(path.sass, ['task-sass']);
     gulp.watch(path.js, ['task-js']);
+    gulp.watch(path.blade, ['task-blade']);
 });
 
 gulp.task('default', ['watch']);
