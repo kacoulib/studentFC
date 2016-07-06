@@ -1,12 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-    <section>
         <h2>{{$titleCat}}</h2>
         <ul class="post">
             @forelse($posts as $post)
                 <li><a class="post__title" href="{{url('post', $post->id)}}">{{$post->title}}</a>
                     <span class="post__published">{{$post->published_at}}</span>
+
+
+
                     @forelse($post->tags as $tag)
                         <span class="post__tag">
                         <a href="{{url('tag', $tag->id)}}">{{$tag->name}}</a>
@@ -19,5 +21,4 @@
                 <li>Aucun post dans cette catégorie</li>
             @endforelse
         </ul>
-    </section>
 @endsection

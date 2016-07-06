@@ -17,7 +17,9 @@
     </nav>
 </header>
 <div class="container grid-2-1">
-    @yield('content')
+    <section>
+        @yield('content')
+    </section>
     <aside>
         @include('partials.sidebar')
     </aside>
